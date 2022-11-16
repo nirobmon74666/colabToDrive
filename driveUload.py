@@ -6,7 +6,7 @@ import os
 dirRoot="/content/drive/Shareddrives/Movies/"
 os.chdir(dirRoot)
 parDirNames= ["Movies","Anime","TV Series","Files"]
-typ="type"
+typ=""
 
 def downloadFile(url):
   with requests.get(url, stream=True) as r:
@@ -21,7 +21,7 @@ def folderDer(ftype):
 
 def folderList():
   print("Folder List: ")
-  next(os.walk('.'))[1]
+  #next(os.walk('.'))[1]
   i=0
   while i<len(next(os.walk('.'))[1]):
     print("{}. {}".format((i+1),next(os.walk('.'))[1][i]))
@@ -29,7 +29,7 @@ def folderList():
 
 def fFolderList():
   print("Folder & File List: ")
-  os.listdir()
+  #os.listdir()
   i=0
   while i<len(os.listdir()):
     print("{}. {}".format((i+1),os.listdir()[i]))
@@ -42,7 +42,7 @@ while condtn<2:
   folderList()
   folSel=int(input("Which {} file do you want to upload? :".format(typ).lower()))
   typ=next(os.walk('.'))[1][folSel-1]
-  print(typ)
+  #print(typ)
   if typ=="Movies":
     os.chdir(next(os.walk('.'))[1][folSel-1])
     downloadFile(url)
