@@ -20,7 +20,7 @@ def folderDer(ftype):
     return foldername
 
 def folderList():
-  print("Folder Lists: ")
+  print("Folder List: ")
   next(os.walk('.'))[1]
   i=0
   while i<len(next(os.walk('.'))[1]):
@@ -28,6 +28,7 @@ def folderList():
     i=i+1
 
 def fFolderList():
+  print("Folder & File List: ")
   os.listdir()
   i=0
   while i<len(os.listdir()):
@@ -39,7 +40,7 @@ url=input("Enter file URL: ")
 while condtn<2:
   condtn+=1
   folderList()
-  folSel=int(input("Which {} file you want to upload? :".format(typ).lower()))
+  folSel=int(input("Which {} file do you want to upload? :".format(typ).lower()))
   typ=next(os.walk('.'))[1][folSel-1]
   print(typ)
   if typ=="Movies":
