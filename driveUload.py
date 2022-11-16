@@ -3,7 +3,8 @@ from tqdm.auto import tqdm
 import requests
 import shutil
 import os
-%cd //content/drive/Shareddrives/Movies/
+dirRoot="%cd //content/drive/Shareddrives/Movies/"
+os.chdir(dirRoot)
 parDirNames= ["Movies","Anime","TV Series","Files"]
 typ="type"
 
