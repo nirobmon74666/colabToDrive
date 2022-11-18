@@ -10,7 +10,10 @@ typ=""
 
 def downloadFile(url):
   with requests.get(url, stream=True) as r:
-      total_length = int(r.headers.get("Content-Length"))
+      try:
+        total_length = int(r.headers.get("Content-Length"))
+      except:
+        total_length = 0
       with tqdm.wrapattr(r.raw, "read", total=total_length, desc="")as raw:
           with open(request.urlopen(request.Request(url)).info().get_filename().replace("MLWBD.com ",""), 'wb')as output:
               shutil.copyfileobj(raw, output)
