@@ -1,4 +1,4 @@
-from urllib.request import urlopen
+from urllib import request
 from tqdm.auto import tqdm
 import requests
 import shutil
@@ -12,7 +12,7 @@ def downloadFile(url):
   with requests.get(url, stream=True) as r:
       total_length = int(r.headers.get("Content-Length"))
       with tqdm.wrapattr(r.raw, "read", total=total_length, desc="")as raw:
-          with open(urlopen(url).headers.get_filename().replace("MLWBD.com ",""), 'wb')as output:
+          with open(request.urlopen(request.Request(url)).info().get_filename().replace("MLWBD.com ",""), 'wb')as output:
               shutil.copyfileobj(raw, output)
 
 def folderDer(ftype):
