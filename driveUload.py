@@ -8,14 +8,15 @@ os.chdir(dirRoot)
 parDirNames= ["Movies","Anime","TV Series","Files"]
 typ=""
 
-def downloadFile(url):
+
+def downloadFile(url,filename):
   with requests.get(url, stream=True) as r:
       try:
         total_length = int(r.headers.get("Content-Length"))
       except:
         total_length = 0
       with tqdm.wrapattr(r.raw, "read", total=total_length, desc="")as raw:
-          with open(request.urlopen(request.Request(url)).info().get_filename().replace("MLWBD.com ",""), 'wb')as output:
+          with open(filename.replace("MLWBD.com ",""), 'wb')as output:
               shutil.copyfileobj(raw, output)
 
 def folderDer(ftype):
@@ -40,6 +41,10 @@ def fFolderList():
 
 condtn=0
 url=input("Enter file URL: ")
+
+filename=request.urlopen(request.Request(url)).info().get_filename()
+if str(filename) == "None":
+  filename=input("Enter Filename: ")
 while condtn<2:
   condtn+=1
   folderList()
@@ -48,10 +53,10 @@ while condtn<2:
   #print(typ)
   if typ=="Movies":
     os.chdir(next(os.walk('.'))[1][folSel-1])
-    downloadFile(url)
+    downloadFile(url,filename)
     break
   else:
     os.chdir(next(os.walk('.'))[1][folSel-1])
-downloadFile(url)
+downloadFile(url,filename)
 fFolderList()
 
