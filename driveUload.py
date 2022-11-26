@@ -53,7 +53,6 @@ while condtn<2:
   #print(typ)
   if typ=="Movies":
     os.chdir(next(os.walk('.'))[1][folSel-1])
-    downloadFile(url,filename)
     break
   else:
     os.chdir(next(os.walk('.'))[1][folSel-1])
