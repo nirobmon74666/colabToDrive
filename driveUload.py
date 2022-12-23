@@ -40,7 +40,7 @@ def fFolderList():
     i=i+1
 
 condtn=0
-url=input("Enter file URL: ")
+#url=input("Enter file URL: ")
 
 filename=request.urlopen(request.Request(url)).info().get_filename()
 if str(filename) == "None":
