@@ -41,7 +41,7 @@ def fFolderList():
 
 condtn=0
 #url=input("Enter file URL: ")
-
+url=url
 filename=request.urlopen(request.Request(url)).info().get_filename()
 if str(filename) == "None":
   filename=input("Enter Filename: ")
