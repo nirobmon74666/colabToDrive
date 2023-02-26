@@ -18,7 +18,8 @@ def downloadFile(url,filename):
       with tqdm.wrapattr(r.raw, "read", total=total_length, desc="")as raw:
           with open(filename.replace("MLWBD.com ",""), 'wb')as output:
               shutil.copyfileobj(raw, output)
-
+          outpt.close()
+      raw.close()
 def folderDer(ftype):
     foldername=parDirNames[ftype-1]
     return foldername
