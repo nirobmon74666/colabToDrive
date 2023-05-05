@@ -3,6 +3,7 @@ from tqdm.auto import tqdm
 import requests
 import shutil
 import os
+import wget
 dirRoot="/content/drive/Shareddrives/Movies/"
 os.chdir(dirRoot)
 parDirNames= ["Movies","Anime","TV Series","Files"]
@@ -41,10 +42,6 @@ def fFolderList():
     i=i+1
 
 condtn=0
-url=input("Enter file URL: ")
-filename=request.urlopen(request.Request(url)).info().get_filename()
-if str(filename) == "None":
-  filename=input("Enter Filename: ")
 while condtn<2:
   condtn+=1
   folderList()
@@ -56,6 +53,12 @@ while condtn<2:
     break
   else:
     os.chdir(next(os.walk('.'))[1][folSel-1])
-downloadFile(url,filename)
+url=input("Enter file URL: ")
+filename=request.urlopen(request.Request(url)).info().get_filename()
+if str(filename) == "None":
+  filename=input("Enter Filename: ")
+  wget.download(url,filename)
+else
+  downloadFile(url,filename)
 fFolderList()
 
