@@ -3,7 +3,6 @@ from tqdm.auto import tqdm
 import requests
 import shutil
 import os
-import wget
 dirRoot="/content/drive/Shareddrives/Movies/"
 os.chdir(dirRoot)
 parDirNames= ["Movies","Anime","TV Series","Files"]
