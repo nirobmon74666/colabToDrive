@@ -56,6 +56,7 @@ url=input("Enter file URL: ")
 filename=request.urlopen(request.Request(url)).info().get_filename()
 if str(filename) == "None":
   filename=input("Enter Filename: ")
-downloadFile(url,filename)
+  os.system("wget -c {} -O {}".format(url,filename) )
+else:
+  downloadFile(url,filename)
 fFolderList()
-
