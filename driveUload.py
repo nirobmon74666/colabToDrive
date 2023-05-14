@@ -41,6 +41,10 @@ def fFolderList():
     i=i+1
 
 condtn=0
+url=input("Enter file URL: ")
+filename=request.urlopen(request.Request(url)).info().get_filename()
+if str(filename) == "None":
+  filename=input("Enter Filename: ")
 while condtn<2:
   condtn+=1
   folderList()
@@ -52,11 +56,5 @@ while condtn<2:
     break
   else:
     os.chdir(next(os.walk('.'))[1][folSel-1])
-url=input("Enter file URL: ")
-filename=request.urlopen(request.Request(url)).info().get_filename()
-if str(filename) == "None":
-  filename=input("Enter Filename: ")
-  os.system("wget -c {} -O {}".format(url,filename) )
-else:
-  downloadFile(url,filename)
+downloadFile(url,filename)
 fFolderList()
